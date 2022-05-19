@@ -290,27 +290,8 @@ def dashboar(request):
 
 		)
 	'''
-	#connection = sqlite3.connect('C:\\Users\\Marcel\\Desktop\\PYTHON\\citacka blockov\\nakupene polozky\\nakup.db')
-	#connection = sqlite3.connect('C:\\Users\\Marcel\\Desktop\\PYTHON\\projekty\\django codemy\\myclub_website\\db.sqlite3')
+
 	connection = sqlite3.connect('.\\db.sqlite3')
-
-	
-
-	#db = settings.DATABASES['default']['NAME']
-
-	#connection = psycopg2.connect(db)
-	
-	'''
-
-	connection = psycopg2.connect(
-		host='ec2-3-212-143-188.compute-1.amazonaws.com',
-		port=5432,
-		database='d8uiap1g8fcu07',
-		user='lonjswwxmkbryh',
-		password='339cdf532849edde18b670be9681461c49cf3bb78745926642bcd503847fdbd6'
-		)
-
-	'''
 
 	query = "SELECT * FROM events_items WHERE owner = '{}';".format(request.user.get_username())
 	query2 = "SELECT * FROM events_category;"
@@ -369,24 +350,7 @@ def dashboar(request):
 
 def dash_interactive(request):
 
-	
-	#db = settings.DATABASES['default']['NAME']
-
-	#connection = psycopg2.connect(db)
-
 	connection = sqlite3.connect('.\\db.sqlite3')
-
-	'''
-	connection = psycopg2.connect(
-		host='ec2-3-212-143-188.compute-1.amazonaws.com',
-		port=5432,
-		database='d8uiap1g8fcu07',
-		user='lonjswwxmkbryh',
-		password='339cdf532849edde18b670be9681461c49cf3bb78745926642bcd503847fdbd6'
-		)
-
-	'''
-
 
 	query = "SELECT * FROM events_items WHERE owner = '{}';".format(request.user.get_username())
 	query2 = "SELECT * FROM events_category;"
@@ -457,7 +421,7 @@ class ItemsListView(SingleTableView):
     model = Items
     table_class = ItemsTable
     form_class = ItemsUpdateCategoryForm
-    context_object_name = 'category' #???
+    context_object_name = 'category'
     #template_name = 'events/tabulka2.html'
 
 
@@ -485,16 +449,6 @@ def dash(request):
 
 	connection = psycopg2.connect(db)
 
-	'''
-	connection = psycopg2.connect(
-		host='ec2-3-212-143-188.compute-1.amazonaws.com',
-		port=5432,
-		database='d8uiap1g8fcu07',
-		user='lonjswwxmkbryh',
-		password='339cdf532849edde18b670be9681461c49cf3bb78745926642bcd503847fdbd6'
-		)
-
-	'''
 
 	query = "SELECT * FROM events_items WHERE owner = '{}';".format(request.user.get_username())
 
@@ -637,30 +591,6 @@ def add_receipt_uid_manual(request):
 	return render(request, 'events/add_receipt_uid.html', {'variable':variable, 'form':form})
 
 def recategorize_new_added_item(item, date_of_purchase_time_stamp):
-	'''
-	DATABASES = {
-	    'default': {
-	        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-	        'NAME': 'BASE_DATABASE',
-	        'USER': 'postgres',
-	        'PASSWORD': 'Marcelk0.',
-	        'HOST': 'localhost',
-	        'PORT': 5433,
-	    }
-	}
-	'''
-
-	'''
-
-	conn = psycopg2.connect(
-		host='ec2-3-212-143-188.compute-1.amazonaws.com',
-		port=5432,
-		database='d8uiap1g8fcu07',
-		user='lonjswwxmkbryh',
-		password='339cdf532849edde18b670be9681461c49cf3bb78745926642bcd503847fdbd6'
-		)
-	'''
-
 
 	from django.conf import settings
 	db = settings.DATABASES['default']['NAME']
@@ -704,25 +634,10 @@ def recategorize_new_added_item(item, date_of_purchase_time_stamp):
 
 def recategorize(item_id):
 
-
-	
-
 	from django.conf import settings
 	db = settings.DATABASES['default']['NAME']
 
 	conn = psycopg2.connect(db)
-
-	'''
-
-	conn = psycopg2.connect(
-		host='ec2-3-212-143-188.compute-1.amazonaws.com',
-		port=5432,
-		database='d8uiap1g8fcu07',
-		user='lonjswwxmkbryh',
-		password='339cdf532849edde18b670be9681461c49cf3bb78745926642bcd503847fdbd6'
-		)
-
-	'''
 
 	c = conn.cursor()
 
@@ -888,9 +803,6 @@ def zoznam(request):
 	#receipts = ReceiptsIds.objects.order_by("date_of_purchase_time_stamp")
 	#receipts = ReceiptsIds.objects.filter(owner = request.user.get_username()).order_by("created_date")
 	
-	# zmaz
-	#print(len(receipts))
-	# potialto
 
 	'''
 	sellers = []
