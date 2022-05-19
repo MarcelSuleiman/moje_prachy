@@ -1,0 +1,10 @@
+{% extends 'events/base.html' %}
+
+
+{% block content %}
+
+	{% load render_table from django_tables2 %}
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	{% render_table table %}
+
+{% endblock %}

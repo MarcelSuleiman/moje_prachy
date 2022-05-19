@@ -1,0 +1,60 @@
+{% extends 'events/base.html' %}
+
+{% load static %}
+
+
+
+{% block content %}
+
+<p>bločky</p>
+
+<!--
+{{sellers}}
+-->
+
+
+<!--
+<div class="container">
+	{% for receipt in receipts %}
+	<div class="row">
+		<div class="col-sm-10">
+			{{ receipt.day_name }} {{ receipt.created_date }}<br>
+			<a href="{%url 'ukaz-blok' receipt.uid %}"><b>{{ receipt.seller }}</b></a> - <small><i>{{ receipt.uid }}</i></small>, {{ receipt.created_time }} - {{ receipt.total_price }} €
+		</div>
+		<div class="col-sm-2">
+			<a href="{%url 'update-blok' receipt.uid %}" align='right'><b>Edit</b></a>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+-->
+
+<table class="table table-striped table-hover">
+	<tbody>
+	{% for receipt in receipts %}
+	<tr>
+		<td>
+			{% if receipt.seller == 'TESCO STORES SR, a.s.'%}
+				<img src="{% static 'img/t.png' %}" height="50" width="50">
+			{% endif %}
+			{% if receipt.seller == 'Lidl Slovenská republika, v.o.s.'%}
+				<img src="{% static 'img/lidl.png' %}" height="50" width="50">
+			{% endif %}
+			{% if receipt.seller == 'Kaufland Slovenská republika v.o.s.'%}
+				<img src="{% static 'img/kaufland.png' %}" height="50" width="50">
+			{% endif %}
+			{% if receipt.seller == 'TERNO real estate s.r.o.'%}
+				<img src="{% static 'img/kraj_400x400.png' %}" height="50" width="50">
+			{% endif %}
+
+
+		</td>
+		<td>{{ receipt.day_name }} {{ receipt.created_date }} {{ receipt.created_time }}<br><a href="{%url 'ukaz-blok' receipt.uid %}"><b>{{ receipt.seller }}</b></a> - , - {{ receipt.total_price }} €</td>
+		<td><small><i>{{ receipt.uid }}</i></small></td>
+		<td><a href="{%url 'ukaz-blok' receipt.uid %}" align='right'><b>Zobraz</b></a></td>
+	</tr>
+	{% endfor %}
+	<tbody>
+</table>
+
+{% endblock %}

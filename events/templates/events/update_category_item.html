@@ -1,0 +1,58 @@
+{% extends 'events/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!--
+{% if messages %}
+    {% for message in messages %}
+        {{ message }}
+    {% endfor %}
+{% endif %}
+-->
+
+<h1>Update Category Item</h1>
+
+<h3>{{ item }}</h3>
+
+
+<form method="post" id="ItemUpdateForm" data-sub-categories-01-url="{% url 'load_sub_category_01' %}">
+	{% csrf_token %}
+	
+	{{ form.as_p}}
+
+	<input type="submit" name="submit" value="Uložiť" class="btn btn-secondary">
+
+	<!--a href="{% url 'zoznam-bez-cat' %}" class="btn btn-secondary">Späť</a>-->
+  <!--<a href={{request.META.HTTP_REFERER}} class="btn btn-secondary">Späť</a>-->
+  <a href="javascript:history.go(-2)" class="btn btn-secondary">Späť</a>
+	
+
+</form>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<script>
+    $("#id_category").change(function () {
+      var url = $("#ItemUpdateForm").attr("data-sub-categories-01-url");  
+      var categoryId = $(this).val();  
+
+      $.ajax({                      
+        url: url,                    
+        data: {
+          'category': categoryId       
+        },
+        success: function (data) {  
+          $("#id_sub_category_01").html(data);  
+        }
+      });
+
+    });
+  </script>
+
+
+
+	
+
+{% endblock %}

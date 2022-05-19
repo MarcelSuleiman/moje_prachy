@@ -1,0 +1,29 @@
+{% extends 'events/base.html' %}
+
+
+{% block content %}
+
+<h1>Update receipt</h1>
+
+<!-- receipt
+{{sellers}}
+-->
+
+
+<form action="" method=POST>
+	{% csrf_token %}
+	{% for item in items %}
+
+		{{item.item}} {{item.price_per_one}} - {{item.item_class}} - {{item.item_sub_class}}</td>
+		{{ form.as_p}}
+
+	{% endfor %}
+
+	<input type="submit" name="submit" value="Ulož" class="btn btn-secondary">
+</form>
+
+
+
+	
+
+{% endblock %}

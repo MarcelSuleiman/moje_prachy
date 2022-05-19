@@ -1,0 +1,48 @@
+{% extends 'events/base.html' %}
+
+
+{% block content %}
+
+
+{% if messages %}
+    {% for message in messages %}
+        {{ message }}
+    {% endfor %}
+{% endif %}
+
+
+<h1>Update Item</h1>
+
+
+
+<form action="" method=POST>
+	{% csrf_token %}
+	
+	{{ form.as_p}}
+
+
+	<!--
+	<input type="submit" name="submit" value="Uložiť" class="btn btn-secondary" action="/ukaz_blok/{{item.uid}}">
+	-->
+	<!--
+	<a href="javascript:history.go(-1)">
+	<input type="submit" name="submit" value="Uložiť" class="btn btn-secondary">
+	</a>
+	-->
+	<a href="{{request.META.HTTP_REFERER}}">
+		<input type="submit" name="submit" value="Uložiť" class="btn btn-secondary">
+	</a>
+
+	<!--<a href="/ukaz_blok/{{item.uid}}" class="btn btn-secondary">Späť</a>-->
+	<!--<a href={{request.META.HTTP_REFERER}} class="btn btn-secondary">Späť</a>-->
+	<a href="javascript:history.go(-2)" class="btn btn-secondary">Späť</a>
+	
+
+
+</form>
+
+
+
+	
+
+{% endblock %}

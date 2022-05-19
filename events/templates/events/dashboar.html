@@ -1,0 +1,41 @@
+{% extends 'events/base.html' %}
+
+
+{% block content %}
+
+	
+	<h1>Tvoje nákupy v grafoch, {{ user.first_name }}</h1>
+	<!--
+	{% if graph %}
+		<p>nanana</p>
+		{{ graph|safe }} {{ graph2|safe }}
+	{% else %}
+		<p>No graph was provided.</p>
+	{% endif %}
+
+
+	<p>tu by myli byt grafy</p>
+	<div>
+	{{ graph|safe }} {{ graph2|safe }}
+	</div>
+	-->
+
+<style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
+
+<table style="width:100%">
+  <tr>
+    <td>{{ graph|safe }}</td>
+    <td>{{ graph2|safe }}</td>
+  </tr>
+  <tr>
+    <td>{{ graph3|safe }}</td>
+    <td>{{ graph4|safe }}</td>
+  </tr>
+</table>
+
+
+{% endblock %}

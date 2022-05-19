@@ -1,0 +1,34 @@
+{% extends 'events/base.html' %}
+
+{% load static %}
+
+<style>
+img {
+  max-width: 100%;
+  height: auto;
+}
+</style>
+
+{% block content %}
+
+<h1>{{ user }}</h1>
+	
+
+<p>Ak máš poškodený QRkód a nedá sa načítať, sem môžes prepísať 34 miestny kód z bločka. 
+Na tvojom bločku z obchodu by sa mal nachádať na spodku, pri QRkóde s označením "UID"</p>
+
+<img src="{% static 'img/uid_vzor_fin.jpg' %}" width="600px">
+
+<p>Prvý znak je "O" ako Oto, nasleduje pomlčka a všetky zvyšné znaky O/0 sú nula.</p>
+
+<form method=POST>
+	{% csrf_token %}
+
+	{{ form.as_p }}
+
+	<input type="submit" class="btn btn-secondary" value="potvrd" name="tlacitko_potvrd">
+</form>
+
+
+
+{% endblock %}
